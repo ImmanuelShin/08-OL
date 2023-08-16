@@ -167,7 +167,9 @@ footer {
     background-color: #00C896;
     color: #331459;
     text-align: center;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
     margin-top: 10px;
     padding: 5px;
 }
