@@ -131,6 +131,7 @@ function iD(element) {
 
 // Rating area
 
+// Fairly self explanatory. Prompts user and checks for numbers. If number, checks for range. If in range, calls addStar()
 let ratingPrompt = "What do you rate this website, 1-37?";
 function userRating(uPrompt) {
     iD("img_area").textContent = "";
@@ -158,15 +159,18 @@ function userRating(uPrompt) {
     }
 }
 
+// Creates and appends img element linked to Star.png. For each n passed by rating variable in userRating(), makes the next star image .1 times larger.
 function addStars(n) {
-    let height = 75;
-    let width = 75;
+    const height = 75;
+    const width = 75;
+    const base = 1;
+    const scale = 0.1;
     for (let i = 1; i <= n; i++) {
         let newImg = document.createElement("img");
         newImg.setAttribute("src", "Assets/Star.png");
         newImg.setAttribute("alt", "Star");
-        newImg.setAttribute("height", height*(1 + 0.1*i));
-        newImg.setAttribute("width", width*(1 + 0.1*i));
+        newImg.setAttribute("height", height*(base + scale*i));
+        newImg.setAttribute("width", width*(base + scale*i));
         iD("img_area").appendChild(newImg);
     }
 }
