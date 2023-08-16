@@ -287,6 +287,26 @@ footer {
     margin: 15px;
 }
 
-#img_area * {
+#img_area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#img_area div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#img_area img {
     padding: 5px;
+}
+
+#img_area p {
+    color: #0132FF;
+    position: absolute;
+    margin: auto;
+    text-align: center;
 }

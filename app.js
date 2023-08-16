@@ -159,18 +159,25 @@ function userRating(uPrompt) {
     }
 }
 
-// Creates and appends img element linked to Star.png. For each n passed by rating variable in userRating(), makes the next star image .1 times larger.
+// Creates a div, img, and p element. Img and p element will go inside div. They all change depending on the rating passed through up in userRating()
 function addStars(n) {
     const height = 75;
     const width = 75;
     const base = 1;
     const scale = 0.1;
-    for (let i = 1; i <= n; i++) {
+    for (let i = 0; i < n; i++) {
+        let newDiv = document.createElement("div");
         let newImg = document.createElement("img");
+        let newP = document.createElement("p");
+        let divId = "star-box" + (i + 1);
+        newDiv.setAttribute("id", divId);
         newImg.setAttribute("src", "Assets/Star.png");
         newImg.setAttribute("alt", "Star");
         newImg.setAttribute("height", height*(base + scale*i));
         newImg.setAttribute("width", width*(base + scale*i));
-        iD("img_area").appendChild(newImg);
+        newP.innerHTML = i + 1;
+        iD("img_area").appendChild(newDiv);
+        iD(divId).appendChild(newImg);
+        iD(divId).appendChild(newP);
     }
 }
