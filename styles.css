@@ -283,6 +283,10 @@ footer {
     padding: 10px;
 }
 
+#img_loop button {
+    margin: 15px;
+}
+
 #img_area * {
     padding: 5px;
 }
