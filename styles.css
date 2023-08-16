@@ -1,0 +1,288 @@
+body {
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Syne Mono', monospace;
+    background-color: #222222;
+}
+
+header {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    height: 50px;
+    align-items: left;
+    justify-content: left;
+    background-color: #4e4e4e;
+    border-bottom: thin solid #00C896;
+}
+
+#logo {
+    width: 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+nav ul li {
+    text-align: center;
+    float: left;
+    height: 100%;
+}
+
+nav li a {
+    display: flex;
+    width: 10vh;
+    height: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover {
+    background-color: #00C896;
+}
+
+#intro {
+    margin: 5%;
+}
+
+#explain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Names might be confusing because I meant to make a carousel with these items, but changed my mind. */
+#scroller {
+    background-color: #4e4e4e;
+    display: flex;
+    position: relative;
+    padding: 5%;
+    border: thin solid #00C896;
+    border-radius: 20px;   
+}
+
+#scroller h2 {
+    position: absolute;
+    top: 2%;
+    right: 45.5%;
+}
+
+/* Position relative to allow for absolute position hover items */
+.scroller-item {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+/* Item is hidden on top of their respective pictures. */
+.img_description {
+    color: #331459;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 2%;
+    padding: 2%;
+    background: #00C896;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s, visibility .2s;
+}
+
+.img_description a {
+    text-decoration: none;
+}
+
+/* Image description appears upon hovering over picture. Kinda cool. */
+.scroller-item:hover .img_description {
+    visibility: visible;
+    opacity: .8;
+}
+
+#demo {
+    display: flex;
+    margin: 2%;
+    justify-content: center;
+}
+
+.demo-container {
+    text-align: center;
+    padding: 50px;
+    width: 420px;
+    height: 400px;
+    margin: 5vh;
+    overflow-wrap: normal;
+    justify-content: center;
+    border: thin solid #00C896;
+    border-radius: 10px;
+    background-color: #4e4e4e;
+}
+
+h1 {
+    text-align: center;
+}
+
+#wiki {
+    width: 100%;
+    text-align: center;
+}
+
+#link_background {
+    background-color: #00C896;
+    color: #331459;
+    width: 20%;
+    margin: auto;
+    border-radius: 5px;
+}
+
+#article embed {
+    background-color: #4e4e4e;
+    width: 80%;
+    height: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: thin solid #00C896;
+}
+
+footer {
+    background-color: #00C896;
+    color: #331459;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+/* Start of JS Playground page */
+
+#memes {
+    text-align: center;
+}
+
+/* Carousel frame */
+#meme_carousel {
+    background: white;
+    height: 400px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 940px;
+    border: thin solid #00C896;
+}
+
+/* Side gradients. Z-index because ::before is underneath */
+#meme_carousel::before, #meme_carousel::after {
+    background: linear-gradient(to right, #00C896 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100px;
+    z-index: 1;
+}
+
+/* Flips ::after linear gradient so that it faces the right way */
+#meme_carousel::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+/* Places gradient in correct location. Same as above for ::after */
+#meme_carousel::before {
+    left: 0;
+    top: 0;
+}
+
+/* Scroll animation of set time. Width set by multipying individual track size (540) by double number of track items */
+#track {
+    animation: scroll 60s linear infinite;
+    display: flex;
+    width: calc(540px * 20);
+
+}
+
+/* Stops on hover to allow reading. */
+#track:hover {
+    animation-play-state: paused;
+}
+
+/* Sets size of each track-part. Margins -1px to allow border. */
+.track-part {
+    text-align: center;
+    padding: 20px;
+    height: 400px;
+    width: 500px;
+    border-left: 1px solid #00C896;
+    border-right: 1px solid #00C896;
+    margin: 0 -1px 0 -1px;
+    background-color: #4e4e4e;
+}
+
+/* Scroll animation from 0 to width of individual part (540) multiplied by number of parts (10) 
+   Added two extra divs in JS_Playground.html so that it looks like an infinite loop. Really cool.
+*/
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-540px * 10));
+    }
+}
+
+#JS_area {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+#JS_area h2 {
+    width: 100%;
+}
+
+#JS_area .not-last{
+    background-color: #4e4e4e;
+    width: 250px;
+    height: 250px;
+    border: thin solid #00C896;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#memory_line {
+    opacity: 1;
+}
+
+#img_loop {
+    width: 100%;
+    background-color: #4e4e4e;
+    border: thin solid #00C896;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#img_area * {
+    padding: 5px;
+}
